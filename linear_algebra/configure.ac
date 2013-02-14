@@ -17,6 +17,18 @@ AM_PROG_CC_C_O
 # add -Wall if possible
 AX_CHECK_COMPILER_FLAGS([-Wall], [CFLAGS="$CFLAGS -Wall"])
 
+# Check for debugging 
+AC_ARG_ENABLE(debug, 
+  AS_HELP_STRING([--disable-debug], [Turn off debugging]), 
+  [case "${enableval}" in 
+     yes) debug=true ;; 
+     no)  debug=false ;; 
+     *) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;; 
+   esac], 
+  [debug=true]) 
+ 
+AS_IF([test "$debug" = "false"], [CPPFLAGS="${CPPFLAGS} -DNDEBUG"]) 
+
 dnl For Fortran support, uncomment (remove "dnl") the following
 dnl AC_PROG_F77
 dnl if test -z "$F77" || test "X$F77" = "Xno"; then
