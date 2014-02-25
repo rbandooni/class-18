@@ -15,6 +15,15 @@ print_matrix(double A[N][M])
   }
 }
 
+void
+print_matrix_linear(double *A, int n)
+{
+  for (int i = 0; i < n; i++) {
+    printf(" %02g", A[i]);
+  }
+  printf("\n");
+}
+
 int
 main(int argc, char **argv)
 {
@@ -27,6 +36,10 @@ main(int argc, char **argv)
 
   printf("print_matrix:\n");
   print_matrix(A);
+  printf("\n");
+
+  printf("print_matrix_linear:\n");
+  print_matrix_linear((double *) A, N*M);
   printf("\n");
 
   return 0;
