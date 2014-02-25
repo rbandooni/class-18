@@ -9,6 +9,7 @@ bin_PROGRAMS = \
 	test_data_layout \
 	test_data_layout_fortran
 
+test_data_layout_SOURCES = test_data_layout.c print_matrix_fortran.F
 test_data_layout_fortran_SOURCES = test_data_layout_fortran.F print_matrix_fortran.F
 
 LDADD = liblinalg.a

@@ -53,5 +53,9 @@ main(int argc, char **argv)
   print_matrix_linear((double *) A, N*M);
   printf("\n");
 
+  printf("print_matrix (fortran):\n");
+  print_matrix_(A);
+  printf("\n");
+
   return 0;
 }
