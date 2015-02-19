@@ -6,7 +6,10 @@ bin_PROGRAMS = \
 	test_vector_add \
 	test_matrix_vector_mul \
 	test_matrix_matrix_mul \
-	test_data_layout
+	test_data_layout \
+	test_data_layout_fortran
+
+test_data_layout_fortran_SOURCES = test_data_layout_fortran.F
 
 LDADD = liblinalg.a
 

@@ -29,11 +29,10 @@ AC_ARG_ENABLE(debug,
  
 AS_IF([test "$debug" = "false"], [CPPFLAGS="${CPPFLAGS} -DNDEBUG"]) 
 
-dnl For Fortran support, uncomment (remove "dnl") the following
-dnl AC_PROG_F77
-dnl if test -z "$F77" || test "X$F77" = "Xno"; then
-dnl   AC_MSG_ERROR([No suitable F77 compiler found])
-dnl fi
+AC_PROG_F77
+if test -z "$F77" || test "X$F77" = "Xno"; then
+  AC_MSG_ERROR([No suitable F77 compiler found])
+fi
 
 # for library support
 AC_PROG_RANLIB
