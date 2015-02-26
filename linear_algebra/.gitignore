@@ -12,6 +12,7 @@ test_data_layout_fortran
 test_average
 test_average_basic
 test_average_fortran
+test_integrate
 
 .deps
 Makefile

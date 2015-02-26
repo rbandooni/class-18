@@ -11,7 +11,8 @@ bin_PROGRAMS = \
 	large_matrix_vector_mul \
 	test_average \
 	test_average_basic \
-	test_average_fortran
+	test_average_fortran \
+	test_integrate
 
 test_data_layout_SOURCES = test_data_layout.c print_matrix_fortran.F
 test_data_layout_fortran_SOURCES = test_data_layout_fortran.F print_matrix_fortran.F
