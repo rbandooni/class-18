@@ -3,6 +3,24 @@
 
 #include <math.h>
 
+// ----------------------------------------------------------------------
+// vector_average
+//
+// calculates a cell-centered representation from a node-centered
+// representation by averaging adjacent values
+
+static void
+vector_average(struct vector *x_cc, struct vector *x_nc)
+{
+  assert(x_nc->n == x_cc->n + 1);
+  for (int i = 0; i < x_cc->n; i++) {
+    VEC(x_cc, i) = .5 * (VEC(x_nc, i) + VEC(x_nc, i+1));
+  }
+}
+
+// ----------------------------------------------------------------------
+// vector_init_sines
+
 static void
 vector_init_sines(struct vector *crd, struct vector *v)
 {
@@ -11,6 +29,9 @@ vector_init_sines(struct vector *crd, struct vector *v)
     VEC(v, i) = sin(x) + 1./3. * sin(3. * x);
   }
 }
+
+// ----------------------------------------------------------------------
+// main
 
 int
 main(int argc, char **argv)
@@ -32,5 +53,6 @@ main(int argc, char **argv)
   // the vector for our averaged-to-cell-centers result
   struct vector *x_cc = vector_create(N);
 
+  vector_average(x_cc, x_nc);
   vector_write(crd_cc, x_cc, "x_cc.asc");
 }
