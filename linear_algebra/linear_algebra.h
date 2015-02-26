@@ -34,6 +34,7 @@ void vector_add(const struct vector *x, const struct vector *y, struct vector *z
 bool vector_is_equal(const struct vector *x, const struct vector *y);
 void vector_print(struct vector *v);
 struct vector *vector_create_crd_nc(int n, double len);
+void vector_write(struct vector *crd, struct vector *v, const char *filename);
 
 // ----------------------------------------------------------------------
 // struct matrix

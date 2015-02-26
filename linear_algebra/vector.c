@@ -95,3 +95,21 @@ vector_create_crd_nc(int n, double len)
   return v;
 }
 
+// ----------------------------------------------------------------------
+// vector_write
+// 
+// write a vector on the given coordinates into an ASCII file
+
+void
+vector_write(struct vector *crd, struct vector *v, const char *filename)
+{
+  assert(crd->n == v->n);
+
+  FILE *file = fopen(filename, "w");
+  
+  for (int i = 0; i < v->n; i++) {
+    fprintf(file, "%g %g\n", VEC(crd, i), VEC(v, i));
+  }
+
+  fclose(file);
+}

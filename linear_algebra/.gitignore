@@ -33,3 +33,4 @@ test-driver
 *.log
 *.trs
 *~
+*.asc

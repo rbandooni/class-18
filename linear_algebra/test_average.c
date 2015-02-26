@@ -23,4 +23,5 @@ main(int argc, char **argv)
   // a sample function on the node-centered grid
   struct vector *x_nc = vector_create(N + 1);
   vector_init_sines(crd_nc, x_nc);
+  vector_write(crd_nc, x_nc, "x_nc.asc");
 }
