@@ -32,6 +32,7 @@ AC_ARG_ENABLE(debug,
  
 AS_IF([test "$debug" = "false"], [CPPFLAGS="${CPPFLAGS} -DNDEBUG"]) 
 
+dnl F77 is the Fortran77 compiler (extension .f / .F)
 AC_PROG_F77
 if test -z "$F77" || test "X$F77" = "Xno"; then
   AC_MSG_ERROR([No suitable F77 compiler found])
@@ -42,6 +43,12 @@ AC_F77_WRAPPERS
 # for library support
 AC_PROG_RANLIB
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
+dnl FC is the Fortran90 compiler (extension .f90 / .F90)
+AC_PROG_FC
+if test -z "$FC" || test "X$FC" = "Xno"; then
+  AC_MSG_ERROR([No suitable Fortran90 compiler found])
+fi
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile])

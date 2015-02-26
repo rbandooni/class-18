@@ -10,10 +10,12 @@ bin_PROGRAMS = \
 	test_data_layout_fortran \
 	large_matrix_vector_mul \
 	test_average \
-	test_average_basic
+	test_average_basic \
+	test_average_fortran
 
 test_data_layout_SOURCES = test_data_layout.c print_matrix_fortran.F
 test_data_layout_fortran_SOURCES = test_data_layout_fortran.F print_matrix_fortran.F
+test_average_fortran_SOURCES = test_average_fortran.F90
 
 LDADD = liblinalg.a
 
