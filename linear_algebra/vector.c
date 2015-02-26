@@ -77,6 +77,25 @@ vector_print(struct vector *v)
 }
 
 // ----------------------------------------------------------------------
+// vector_create_crd_cc
+//
+// create a uniformly spaced cell-centered coordinate vector
+// with n elements covering [0:len]
+
+struct vector *
+vector_create_crd_cc(int n, double len)
+{
+  struct vector *v = vector_create(n);
+
+  double dx = len / n;
+  for (int i = 0; i < n; i++) {
+    VEC(v, i) = (i + .5) * dx;
+  }
+
+  return v;
+}
+
+// ----------------------------------------------------------------------
 // vector_create_crd_nc
 //
 // create a uniformly spaced node-centered coordinate vector

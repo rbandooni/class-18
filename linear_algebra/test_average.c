@@ -24,4 +24,13 @@ main(int argc, char **argv)
   struct vector *x_nc = vector_create(N + 1);
   vector_init_sines(crd_nc, x_nc);
   vector_write(crd_nc, x_nc, "x_nc.asc");
+
+  // cell-centered coordinates
+  // There's one less cell center than there are nodes (N+1 -> N);
+  struct vector *crd_cc = vector_create_crd_cc(N, 2. * M_PI);
+
+  // the vector for our averaged-to-cell-centers result
+  struct vector *x_cc = vector_create(N);
+
+  vector_write(crd_cc, x_cc, "x_cc.asc");
 }
