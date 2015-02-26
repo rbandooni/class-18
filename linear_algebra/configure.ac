@@ -17,6 +17,9 @@ AM_PROG_CC_C_O
 # add -Wall if possible
 AX_CHECK_COMPILER_FLAGS([-Wall], [CFLAGS="$CFLAGS -Wall"])
 
+# link with the math library if needed
+AC_CHECK_LIB([m], [sin])
+
 # Check for debugging 
 AC_ARG_ENABLE(debug, 
   AS_HELP_STRING([--disable-debug], [Turn off debugging]), 
