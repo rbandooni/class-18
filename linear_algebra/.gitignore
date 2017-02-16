@@ -4,6 +4,7 @@
 vector_dot
 test_vector_dot
 test_vector_add
+test_matrix_vector_mul
 .deps
 Makefile
 Makefile.in
