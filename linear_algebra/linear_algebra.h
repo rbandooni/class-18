@@ -6,5 +6,6 @@
 #define N (3)
 
 double vector_dot(double *x, double *y);
+void vector_add(double *x, double *y, double *z);
 
 #endif
