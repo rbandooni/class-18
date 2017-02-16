@@ -2,6 +2,7 @@
 *.a
 *.dSYM
 vector_dot
+test_vector_dot
 .deps
 Makefile
 Makefile.in
