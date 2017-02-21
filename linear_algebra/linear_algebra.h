@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-//#define BOUNDS_CHECK
+#define BOUNDS_CHECK
 
 // ----------------------------------------------------------------------
 // struct vector
