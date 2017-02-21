@@ -46,3 +46,18 @@ vector_destroy(struct vector *v)
   free(v->vals);
   free(v);
 }
+
+// ----------------------------------------------------------------------
+// vector_is_equal
+
+bool
+vector_is_equal(const struct vector *x, const struct vector *y)
+{
+  for (int i = 0; i < x->n; i++) {
+    if (VEC(x, i) != VEC(y, i)) {
+      return false;
+    }
+  }
+  return true;
+}
+
