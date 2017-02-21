@@ -8,11 +8,11 @@
 // where x and y are vectors, and A is a matrix
 
 void
-matrix_vector_mul(double A[N][N], double *x, double *y)
+matrix_vector_mul(int n, double A[][n], double *x, double *y)
 {
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < n; i++) {
     y[i] = 0.;
-    for (int j = 0; j < N; j++) {
+    for (int j = 0; j < n; j++) {
       y[i] += A[i][j] * x[j];
     }
   }

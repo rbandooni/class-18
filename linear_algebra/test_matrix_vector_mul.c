@@ -12,13 +12,13 @@
 int
 main(int argc, char **argv)
 {
-  double A[N][N] = { { 1., 0., 0. },
+  double A[3][3] = { { 1., 0., 0. },
 		     { 0., 2., 0. },
 		     { 0., 0., 3. }, };
-  double x[N] = { 1., 2., 3. };
-  double y[N];
+  double x[3] = { 1., 2., 3. };
+  double y[3];
   
-  matrix_vector_mul(A, x, y);
+  matrix_vector_mul(3, A, x, y);
 
   printf("result vector is y = [%g, %g, %g]\n", y[0], y[1], y[2]);
   assert(y[0] == 1.);
