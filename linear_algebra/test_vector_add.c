@@ -19,7 +19,9 @@ main(int argc, char **argv)
 
   vector_add(x, y, z);
 
-  printf("sum vector is z = [%g, %g, %g]\n", VEC(z, 0), VEC(z, 1), VEC(z, 2));
+  printf("sum vector is z = ");
+  vector_print(z);
+  printf("\n");
 
   // check result agains reference result
   assert(vector_is_equal(z, z_ref));

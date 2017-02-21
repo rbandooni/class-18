@@ -30,6 +30,7 @@ void vector_destroy(struct vector *v);
 double vector_dot(const struct vector *x, const struct vector *y);
 void vector_add(const struct vector *x, const struct vector *y, struct vector *z);
 bool vector_is_equal(const struct vector *x, const struct vector *y);
+void vector_print(struct vector *v);
 void matrix_vector_mul(int n, const double A[][n], const double *x, double *y);
 
 #endif

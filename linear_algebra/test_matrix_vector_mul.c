@@ -21,7 +21,9 @@ main(int argc, char **argv)
 
   matrix_vector_mul(3, A, x->vals, y->vals);
 
-  printf("result vector is y = [%g, %g, %g]\n", VEC(y, 0), VEC(y, 1), VEC(y, 2));
+  printf("result vector is y = ");
+  vector_print(y);
+  printf("\n");
 
   // check result against reference result
   assert(vector_is_equal(y, y_ref));

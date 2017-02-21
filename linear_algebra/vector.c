@@ -2,6 +2,7 @@
 #include "linear_algebra.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 // ----------------------------------------------------------------------
 // vector_create
@@ -59,5 +60,19 @@ vector_is_equal(const struct vector *x, const struct vector *y)
     }
   }
   return true;
+}
+
+// vector_print
+//
+// prints vector "v" to stdout
+
+void
+vector_print(struct vector *v)
+{
+  printf("[(#=%d)", v->n);
+  for (int i = 0; i < v->n; i++) {
+    printf(" %g", VEC(v, i));
+  }
+  printf("]");
 }
 
