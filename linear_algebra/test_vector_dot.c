@@ -17,8 +17,8 @@ main(int argc, char **argv)
   struct vector x = { .n = 3, .vals = x_vals };
   struct vector y = { .n = 3, .vals = y_vals };
 
-  printf("dot product is %g\n", vector_dot(3, x.vals, y.vals));
-  assert(vector_dot(3, x.vals, y.vals) == 20.);
+  printf("dot product is %g\n", vector_dot(&x, &y));
+  assert(vector_dot(&x, &y) == 20.);
 
   return 0;
 }

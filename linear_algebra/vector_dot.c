@@ -11,11 +11,11 @@
 // y: second vector
 
 double
-vector_dot(int n, const double *x, const double *y)
+vector_dot(const struct vector *x, const struct vector *y)
 {
   double sum = 0.f;
-  for (int i = 0; i < n; i++) {
-    sum += x[i] * y[i];
+  for (int i = 0; i < x->n; i++) {
+    sum += VEC(x, i) * VEC(y, i);
   }
   return sum;
 }
