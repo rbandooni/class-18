@@ -8,7 +8,7 @@
 // where x and y are vectors, and A is a matrix
 
 void
-matrix_vector_mul(int n, double A[][n], double *x, double *y)
+matrix_vector_mul(int n, const double A[][n], const double *x, double *y)
 {
   for (int i = 0; i < n; i++) {
     y[i] = 0.;
