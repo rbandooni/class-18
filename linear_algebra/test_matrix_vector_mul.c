@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------
 // main
 //
-// test the mat_vec_mult() function
+// test the matrix_vector_mul() function
 
 int
 main(int argc, char **argv)
