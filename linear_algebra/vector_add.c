@@ -7,9 +7,9 @@
 // calculate z = x + y, for the vectors x, y, z
 
 void
-vector_add(double *x, double *y, double *z)
+vector_add(int n, double *x, double *y, double *z)
 {
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < n; i++) {
     z[i] = x[i] + y[i];
   }
 }

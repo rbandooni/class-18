@@ -16,7 +16,7 @@ main(int argc, char **argv)
   double y[N] = { 2., 3., 4. };
   double z[N];
 
-  vector_add(x, y, z);
+  vector_add(N, x, y, z);
 
   printf("sum vector is z = [%g, %g, %g]\n", z[0], z[1], z[2]);
   assert(z[0] == 3.);
