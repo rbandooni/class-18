@@ -2,6 +2,7 @@
 #include "linear_algebra.h"
 
 #include <stdio.h>
+#include <assert.h>
 
 // ----------------------------------------------------------------------
 // main
@@ -20,6 +21,9 @@ main(int argc, char **argv)
   matrix_vector_mul(A, x, y);
 
   printf("result vector is y = [%g, %g, %g]\n", y[0], y[1], y[2]);
+  assert(y[0] == 1.);
+  assert(y[1] == 4.);
+  assert(y[2] == 9.);
 
   return 0;
 }
