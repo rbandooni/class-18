@@ -16,7 +16,7 @@ struct vector *vector_create(int n);
 struct vector *vector_create_and_set(int n, const double *vals);
 void vector_destroy(struct vector *v);
 double vector_dot(const struct vector *x, const struct vector *y);
-void vector_add(int n, const double *x, const double *y, double *z);
+void vector_add(const struct vector *x, const struct vector *y, struct vector *z);
 void matrix_vector_mul(int n, const double A[][n], const double *x, double *y);
 
 #endif
