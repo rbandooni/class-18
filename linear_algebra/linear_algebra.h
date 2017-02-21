@@ -40,7 +40,15 @@ struct matrix {
   int m, n;
 };
 
+#ifdef BOUNDS_CHECK
+#define MAT(M, i, j) (*({						\
+	assert((i) >= 0 && (i) < (M)->m);				\
+	assert((j) >= 0 && (j) < (M)->n);				\
+	&((M)->vals[(i) * (M)->n + (j)]);				\
+      })) 
+#else
 #define MAT(m, i, j) ((m)->vals[(i) * (m)->n + (j)])
+#endif
 
 struct matrix *matrix_create(int m, int n);
 void matrix_destroy(struct matrix *M);
