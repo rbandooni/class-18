@@ -48,10 +48,10 @@ main(int argc, char **argv)
 {
   const int m = 500, n = 500, k = 200;
 
-  struct matrix *C = matrix_create(m, n);
-  struct matrix *C_ref = matrix_create(m, n);
   struct matrix *A = matrix_create(m, k);
   struct matrix *B = matrix_create(k, n);
+  struct matrix *C = matrix_create(m, n);
+  struct matrix *C_ref = matrix_create(m, n);
 
   // build a test matrix
   setup_test_matrices(A, B, C_ref);
