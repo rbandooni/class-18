@@ -11,6 +11,7 @@ liblinalg_a_SOURCES = \
 	vector.c \
 	vector_dot.c \
 	vector_add.c \
+	matrix.c \
 	matrix_vector_mul.c
 
 TESTS = \

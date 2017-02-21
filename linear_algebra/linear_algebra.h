@@ -31,6 +31,20 @@ double vector_dot(const struct vector *x, const struct vector *y);
 void vector_add(const struct vector *x, const struct vector *y, struct vector *z);
 bool vector_is_equal(const struct vector *x, const struct vector *y);
 void vector_print(struct vector *v);
+
+// ----------------------------------------------------------------------
+// struct matrix
+
+struct matrix {
+  double *vals;
+  int m, n;
+};
+
+#define MAT(m, i, j) ((m)->vals[(i) * (m)->n + (j)])
+
+struct matrix *matrix_create(int m, int n);
+void matrix_destroy(struct matrix *M);
+void matrix_print(struct matrix *M);
 void matrix_vector_mul(int n, const double A[][n], const double *x, double *y);
 
 #endif
