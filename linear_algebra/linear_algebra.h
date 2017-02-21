@@ -3,6 +3,9 @@
 #define LINEAR_ALGEBRA_H
 
 #include <stdbool.h>
+#include <assert.h>
+
+//#define BOUNDS_CHECK
 
 // ----------------------------------------------------------------------
 // struct vector
@@ -12,7 +15,14 @@ struct vector {
   int n;
 };
 
+#ifdef BOUNDS_CHECK
+#define VEC(v, i) (*({				\
+	assert((i) >= 0 && (i) < (v)->n);	\
+	&((v)->vals[(i)]);			\
+      }))
+#else
 #define VEC(v, i) ((v)->vals[i])
+#endif
 
 struct vector *vector_create(int n);
 struct vector *vector_create_and_set(int n, const double *vals);
