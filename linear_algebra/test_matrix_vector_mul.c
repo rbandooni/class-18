@@ -22,8 +22,8 @@ main(int argc, char **argv)
 
   matrix_print(A);
   printf("\n");
-
-  matrix_vector_mul(3, A->vals, x->vals, y->vals);
+  
+  matrix_vector_mul(A, x, y);
 
   printf("result vector is y = ");
   vector_print(y);

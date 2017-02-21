@@ -8,12 +8,12 @@
 // where x and y are vectors, and A is a matrix
 
 void
-matrix_vector_mul(int n, const double A[][n], const double *x, double *y)
+matrix_vector_mul(const struct matrix *A, const struct vector *x, struct vector *y)
 {
-  for (int i = 0; i < n; i++) {
-    y[i] = 0.;
-    for (int j = 0; j < n; j++) {
-      y[i] += A[i][j] * x[j];
+  for (int i = 0; i < A->m; i++) {
+    VEC(y, i) = 0.;
+    for (int j = 0; j < A->n; j++) {
+      VEC(y, i) += MAT(A, i, j) * VEC(x, j);
     }
   }
 }

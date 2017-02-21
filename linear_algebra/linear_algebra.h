@@ -53,6 +53,6 @@ struct matrix {
 struct matrix *matrix_create(int m, int n);
 void matrix_destroy(struct matrix *M);
 void matrix_print(struct matrix *M);
-void matrix_vector_mul(int n, const double A[][n], const double *x, double *y);
+void matrix_vector_mul(const struct matrix *A, const struct vector *x, struct vector *y);
 
 #endif
