@@ -34,6 +34,8 @@ if test -z "$F77" || test "X$F77" = "Xno"; then
   AC_MSG_ERROR([No suitable F77 compiler found])
 fi
 
+AC_F77_WRAPPERS 
+
 # for library support
 AC_PROG_RANLIB
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])

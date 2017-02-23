@@ -1,8 +1,14 @@
 
+#include "config.h"
+
 #include <stdio.h>
 
 #define N 3
 #define M 4
+
+#define print_matrix_F77 F77_FUNC_(print_matrix, PRINT_MATRIX)
+
+void print_matrix_F77(double *);
 
 void
 print_matrix(double A[N][M])
@@ -54,7 +60,7 @@ main(int argc, char **argv)
   printf("\n");
 
   printf("print_matrix (fortran):\n");
-  print_matrix_(A);
+  print_matrix_F77((double *) A);
   printf("\n");
 
   return 0;
