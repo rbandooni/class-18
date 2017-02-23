@@ -1,11 +1,12 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-check_PROGRAMS = \
+bin_PROGRAMS = \
 	test_vector_dot \
 	test_vector_add \
 	test_matrix_vector_mul \
-	test_matrix_matrix_mul
+	test_matrix_matrix_mul \
+	test_data_layout
 
 LDADD = liblinalg.a
 
