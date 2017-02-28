@@ -23,7 +23,8 @@ liblinalg_a_SOURCES = \
 	vector_add.c \
 	matrix.c \
 	matrix_vector_mul.c \
-	matrix_matrix_mul.c
+	matrix_matrix_mul.c \
+	matrix_vector_mul_f.F
 
 TESTS = \
 	test_vector_dot \

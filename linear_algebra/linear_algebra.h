@@ -74,6 +74,12 @@ void matrix_print(struct matrix *M);
 void matrix_vector_mul(const struct matrix *A, const struct vector *x, struct vector *y);
 void matrix_matrix_mul(const struct matrix *A, const struct matrix *B, struct matrix *C);
 
+// same as the regular matrix_vector_mul, but implemented in Fortran
+// (it really shouldn't be a separate function, it should replace the original one,
+// but the purpose here is actually to compare the performance, so we want to be able
+// to choose)
+void matrix_vector_mul_fortran(const struct matrix *A, const struct vector *x, struct vector *y);
+
 // ----------------------------------------------------------------------
 // other useful stuff
 
