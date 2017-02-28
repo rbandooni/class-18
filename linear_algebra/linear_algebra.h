@@ -47,7 +47,7 @@ struct matrix {
 	&((M)->vals[(i) * (M)->n + (j)]);				\
       })) 
 #else
-#define MAT(m, i, j) ((m)->vals[(i) * (m)->n + (j)])
+#define MAT(M, i, j) ((M)->vals[(i) * (M)->n + (j)])
 #endif
 
 struct matrix *matrix_create(int m, int n);
