@@ -57,6 +57,20 @@ void matrix_vector_mul(const struct matrix *A, const struct vector *x, struct ve
 void matrix_matrix_mul(const struct matrix *A, const struct matrix *B, struct matrix *C);
 
 // ----------------------------------------------------------------------
+// other useful stuff
+
+#include <sys/time.h>
+#include <stdlib.h>
+
+static inline double
+WTime(void)
+{
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv.tv_sec + tv.tv_usec / 1e6;
+}
+
+// ----------------------------------------------------------------------
 
 #include <stdio.h>
 

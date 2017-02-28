@@ -48,23 +48,33 @@ int
 main(int argc, char **argv)
 {
   const int N = 20000;
-  
+  double tbeg, tend;
 
   // set up matrix / vectors 
+  tbeg = WTime(); 
+
   struct matrix *A = matrix_create(N, N);
   setup_test_matrix(A);
 
   struct vector *x = vector_create(N);
   struct vector *y = vector_create(N);
   struct vector *y_ref = vector_create(N);
-
   setup_test_vectors(x, y_ref);
 
+  tend = WTime(); 
+  printf("setup took %g sec\n", tend - tbeg); 
+
   // calculate y = Ax
+  tbeg = WTime();
   matrix_vector_mul(A, x, y);
+  tend = WTime(); 
+  printf("matrix_vector_mul() took %g sec\n", tend - tbeg); 
 
   // check result against reference result
+  tbeg = WTime();
   assert(vector_is_equal(y, y_ref));
+  tend = WTime(); 
+  printf("checking result took %g sec\n", tend - tbeg); 
 
   return 0;
 }
