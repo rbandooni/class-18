@@ -1,15 +1,10 @@
-# Class 7
+# Class 10
 
-This repository contains the starter code for class 7 and the subsequent homework.
-
-## factorial
-
-It has an example of some code with a couple of bugs in the
-`factorial` directory.
+This repository contains the starter code for class 10 and the subsequent homework.
 
 ## linear algebra
 
-In the `linear_algebra` directory, there are the beginnings of some vector /
+In the `linear_algebra` directory, there is by now a good collection vector /
 matrix computations.
 
 
