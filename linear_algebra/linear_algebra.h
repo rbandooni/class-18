@@ -7,6 +7,8 @@
 
 //#define BOUNDS_CHECK
 
+//#define MATRIX_FORTRAN_ORDER
+
 // ----------------------------------------------------------------------
 // struct vector
 
@@ -40,6 +42,20 @@ struct matrix {
   int m, n;
 };
 
+#ifdef MATRIX_FORTRAN_ORDER
+
+#ifdef BOUNDS_CHECK
+#define MAT(M, i, j) (*({						\
+	assert((i) >= 0 && (i) < (M)->m);				\
+	assert((j) >= 0 && (j) < (M)->n);				\
+	&((M)->vals[(j) * (M)->m + (i)]);				\
+      })) 
+#else
+#define MAT(M, i, j) ((M)->vals[(j) * (M)->m + (i)])
+#endif
+
+#else // !MATRIX_FORTRAN_ORDER (a.k.a, C order)
+
 #ifdef BOUNDS_CHECK
 #define MAT(M, i, j) (*({						\
 	assert((i) >= 0 && (i) < (M)->m);				\
@@ -48,6 +64,8 @@ struct matrix {
       })) 
 #else
 #define MAT(M, i, j) ((M)->vals[(i) * (M)->n + (j)])
+#endif
+
 #endif
 
 struct matrix *matrix_create(int m, int n);
