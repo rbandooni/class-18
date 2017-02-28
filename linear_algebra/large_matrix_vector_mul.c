@@ -47,7 +47,7 @@ setup_test_matrix(struct matrix *A)
 int
 main(int argc, char **argv)
 {
-  const int N = 5;
+  const int N = 20000;
   
 
   // set up matrix / vectors 
@@ -60,15 +60,8 @@ main(int argc, char **argv)
 
   setup_test_vectors(x, y_ref);
 
-  matrix_print(A);
-  printf("\n");
-  
   // calculate y = Ax
   matrix_vector_mul(A, x, y);
-
-  printf("result vector is y = ");
-  vector_print(y);
-  printf("\n");
 
   // check result against reference result
   assert(vector_is_equal(y, y_ref));
