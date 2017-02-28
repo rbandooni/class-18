@@ -20,6 +20,8 @@ config.h
 config.h.in
 config.log
 config.status
+config.guess
+config.sub
 configure
 depcomp
 install-sh
@@ -28,3 +30,4 @@ stamp-h1
 test-driver
 *.log
 *.trs
+*~
