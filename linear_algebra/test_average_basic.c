@@ -21,7 +21,7 @@ vector_average(float *cc, float *nc, int n)
 int
 main(int argc, char **argv)
 {
-  int N = 100;
+  int N = 1000000;
   float x_nc[N+1];
   
   float dx = 2. * M_PI / N;
@@ -38,7 +38,13 @@ main(int argc, char **argv)
   fclose(file);
 
   float x_cc[N];
-  vector_average(x_cc, x_nc, N);
+
+  double tbeg = WTime();
+  for (int i = 0; i < 1000; i++) {
+    vector_average(x_cc, x_nc, N);
+  }
+  double tend = WTime();
+  printf("1000x vector_average took %g s\n", tend - tbeg);
 
   file = fopen("x_cc.asc", "w");
   for (int i = 0; i < N; i++) {
