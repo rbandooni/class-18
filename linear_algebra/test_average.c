@@ -13,6 +13,7 @@ static void
 vector_average(struct vector *x_cc, struct vector *x_nc)
 {
   assert(x_nc->n == x_cc->n + 1);
+#pragma omp parallel for
   for (int i = 0; i < x_cc->n; i++) {
     VEC(x_cc, i) = .5 * (VEC(x_nc, i) + VEC(x_nc, i+1));
   }
@@ -36,7 +37,7 @@ vector_init_sines(struct vector *crd, struct vector *v)
 int
 main(int argc, char **argv)
 {
-  const int N = 100;
+  const int N = 1000000;
 
   // node-centered coordinates
   struct vector *crd_nc = vector_create_crd_nc(N + 1, 2. * M_PI);
@@ -53,6 +54,13 @@ main(int argc, char **argv)
   // the vector for our averaged-to-cell-centers result
   struct vector *x_cc = vector_create(N);
 
-  vector_average(x_cc, x_nc);
+  double tbeg = WTime();
+  for (int i = 0; i < 1000; i++) {
+    vector_average(x_cc, x_nc);
+  }
+  double tend = WTime();
+  printf("1000x vector_average took %g s\n", tend - tbeg);
+
+
   vector_write(crd_cc, x_cc, "x_cc.asc");
 }
