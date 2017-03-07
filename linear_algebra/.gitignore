@@ -10,6 +10,7 @@ large_matrix_vector_mul
 test_data_layout
 test_data_layout_fortran
 test_average
+test_average_basic
 
 .deps
 Makefile
