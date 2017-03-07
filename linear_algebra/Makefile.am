@@ -31,4 +31,8 @@ TESTS = \
 	test_vector_dot \
 	test_vector_add \
 	test_matrix_vector_mul \
-	test_matrix_matrix_mul
+	test_matrix_matrix_mul \
+	test_average.sh
+
+
+
