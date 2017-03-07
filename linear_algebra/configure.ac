@@ -17,6 +17,10 @@ AM_PROG_CC_C_O
 # add -Wall if possible
 AX_CHECK_COMPILER_FLAGS([-Wall], [CFLAGS="$CFLAGS -Wall"])
 
+# find flags for using OpenMP
+AC_OPENMP
+CFLAGS="$CFLAGS $OPENMP_CFLAGS"
+
 # link with the math library if needed
 AC_CHECK_LIB([m], [sin])
 
@@ -49,6 +53,12 @@ AC_PROG_FC
 if test -z "$FC" || test "X$FC" = "Xno"; then
   AC_MSG_ERROR([No suitable Fortran90 compiler found])
 fi
+
+dnl doesn't work on fishercat :(
+dnl AC_LANG(Fortran)
+dnl AC_OPENMP
+dnl FCFLAGS="$FCFLAGS $OPENMP_FCFLAGS"
+FCFLAGS="$FCFLAGS -fopenmp"
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile])
