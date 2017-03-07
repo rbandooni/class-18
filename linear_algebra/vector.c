@@ -76,3 +76,22 @@ vector_print(struct vector *v)
   printf("]");
 }
 
+// ----------------------------------------------------------------------
+// vector_create_crd_nc
+//
+// create a uniformly spaced node-centered coordinate vector
+// with n elements covering [0:len]
+
+struct vector *
+vector_create_crd_nc(int n, double len)
+{
+  struct vector *v = vector_create(n);
+
+  double dx = len / (n-1);
+  for (int i = 0; i < n; i++) {
+    VEC(v, i) = i * dx;
+  }
+  
+  return v;
+}
+
