@@ -10,6 +10,7 @@
 void
 vector_average(float *cc, float *nc, int n)
 {
+#pragma omp parallel for
   for (int i = 0; i < n; i++) {
     cc[i] = .5 * (nc[i] + nc[i+1]);
   }
