@@ -2,6 +2,7 @@
 *.a
 *.dSYM
 hello_mpi
+hello_mpi_2
 
 .deps
 Makefile
