@@ -48,6 +48,8 @@ calc_derivative(double *d, double *x, int N)
 {
   double dx = 2. * M_PI / N;
 
+  d[0] = (x[1] - x[N-1]) / (2. * dx);
+  d[N-1] = (x[0] - x[N-2]) / (2. * dx);
   for (int i = 1; i < N - 1; i++) {
     d[i] = (x[i+1] - x[i-1]) / (2. * dx);
   }
