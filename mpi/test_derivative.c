@@ -1,7 +1,10 @@
 
+#include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+#include "mpi_debug.h"
 
 #include "fld1d.h"
 
@@ -80,6 +83,12 @@ main(int argc, char **argv)
 
   struct fld1d *x = fld1d_create(-1, N + 1);
   struct fld1d *d = fld1d_create(0, N);
+  MPI_Init(&argc, &argv);
+
+  int rank, size;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+
 
   set_sine(x, N);
   write(x, N, "x.asc");
@@ -90,5 +99,6 @@ main(int argc, char **argv)
   fld1d_destroy(d);
   fld1d_destroy(x);
 
+  MPI_Finalize();
   return 0;
 }
