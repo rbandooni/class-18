@@ -18,7 +18,7 @@ set_sine(struct fld1d *x, int N)
 {
   double dx = 2. * M_PI / N;
 
-  for (int i = 0; i < N; i++) {
+  for (int i = x->ib; i < x->ie; i++) {
     double xx = i * dx;
     F1(x, i) = sin(xx);
   }
@@ -35,7 +35,7 @@ write(struct fld1d *x, int N, const char *filename)
   double dx = 2. * M_PI / N;
   FILE *f = fopen(filename, "w");
 
-  for (int i = 0; i < N; i++) {
+  for (int i = x->ib; i < x->ie; i++) {
     double xx = i * dx;
     fprintf(f, "%g %g\n", xx, F1(x, i));
   }
@@ -51,8 +51,8 @@ write(struct fld1d *x, int N, const char *filename)
 static void
 fill_ghosts(struct fld1d *x, int N)
 {
-  F1(x, -1) = F1(x, N-1);
-  F1(x,  N) = F1(x, 0  );
+  /* F1(x, -1) = F1(x, N-1); */
+  /* F1(x,  N) = F1(x, 0  ); */
 }
 
 // ----------------------------------------------------------------------
@@ -67,11 +67,10 @@ calc_derivative(struct fld1d *d, struct fld1d *x, int N)
 
   double dx = 2. * M_PI / N;
 
-  for (int i = 0; i < N; i++) {
+  for (int i = d->ib; i < d->ie; i++) {
     F1(d, i) = (F1(x, i+1) - F1(x, i-1)) / (2. * dx);
   }
 }
-
 
 // ----------------------------------------------------------------------
 // main
@@ -80,15 +79,23 @@ int
 main(int argc, char **argv)
 {
   const int N = 50;
-
-  struct fld1d *x = fld1d_create(-1, N + 1);
-  struct fld1d *d = fld1d_create(0, N);
+  
   MPI_Init(&argc, &argv);
 
   int rank, size;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
 
+  int ib, ie;
+  assert(size == 2);
+  if (rank == 0) {
+    ib = 0; ie = 25;
+  } else {
+    ib = 25; ie = 50;
+  }
+  
+  struct fld1d *x = fld1d_create(ib-1, ie+1);
+  struct fld1d *d = fld1d_create(ib  , ie  );
 
   set_sine(x, N);
   write(x, N, "x.asc");
