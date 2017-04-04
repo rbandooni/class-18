@@ -36,6 +36,18 @@ main(int argc, char **argv)
   }
   mprintf("sum = %g\n", sum);
 
+  if (rank == 0) {
+    for (int src = 1; src < size; src++) { // collect partial sums on proc 0
+      double partial_sum;
+      MPI_Recv(&partial_sum, 1, MPI_DOUBLE, src, 111, MPI_COMM_WORLD,
+	       MPI_STATUS_IGNORE);
+      sum += partial_sum;
+    }
+    printf("The final sum is %g\n", sum);
+  } else { // on other procs, send partial sum to proc 0
+    MPI_Send(&sum, 1, MPI_DOUBLE, 0, 111, MPI_COMM_WORLD);
+  }
+
   MPI_Finalize();
   return 0;
 }
