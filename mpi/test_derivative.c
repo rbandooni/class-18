@@ -33,7 +33,11 @@ static void
 write(struct fld1d *x, int N, const char *filename)
 {
   double dx = 2. * M_PI / N;
-  FILE *f = fopen(filename, "w");
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  char s[100];
+  snprintf(s, 100, "%s-%d.asc", filename, rank);
+  FILE *f = fopen(s, "w");
 
   for (int i = x->ib; i < x->ie; i++) {
     double xx = i * dx;
@@ -98,10 +102,10 @@ main(int argc, char **argv)
   struct fld1d *d = fld1d_create(ib  , ie  );
 
   set_sine(x, N);
-  write(x, N, "x.asc");
+  write(x, N, "x");
 
   calc_derivative(d, x, N);
-  write(d, N, "d.asc");
+  write(d, N, "d");
 
   fld1d_destroy(d);
   fld1d_destroy(x);
