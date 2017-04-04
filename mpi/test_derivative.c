@@ -41,6 +41,18 @@ write(struct fld1d *x, int N, const char *filename)
 }
 
 // ----------------------------------------------------------------------
+// fill_ghosts
+//
+// fills the ghost cells at either end of x
+
+static void
+fill_ghosts(struct fld1d *x, int N)
+{
+  F1(x, -1) = F1(x, N-1);
+  F1(x,  N) = F1(x, 0  );
+}
+
+// ----------------------------------------------------------------------
 // calc_derivative
 //
 // calculates a 2nd order centered difference approximation to the derivative
@@ -48,6 +60,8 @@ write(struct fld1d *x, int N, const char *filename)
 static void
 calc_derivative(struct fld1d *d, struct fld1d *x, int N)
 {
+  fill_ghosts(x, N);
+
   double dx = 2. * M_PI / N;
 
   for (int i = 0; i < N; i++) {
