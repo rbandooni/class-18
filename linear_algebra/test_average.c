@@ -27,7 +27,7 @@ vector_init_sines(struct vector *crd, struct vector *v)
 {
   for (int i = 0; i < v->n; i++) {
     float x = VEC(crd, i);
-    VEC(v, i) = sin(x) + 1./3. * sin(3. * x);
+    VEC(v, i) = sin(x+1) + 1./3. * sin(3. * (x+1));
   }
 }
 
@@ -37,7 +37,7 @@ vector_init_sines(struct vector *crd, struct vector *v)
 int
 main(int argc, char **argv)
 {
-  const int N = 1000000;
+  const int N = 100;
 
   // node-centered coordinates
   struct vector *crd_nc = vector_create_crd_nc(N + 1, 2. * M_PI);
@@ -55,11 +55,11 @@ main(int argc, char **argv)
   struct vector *x_cc = vector_create(N);
 
   double tbeg = WTime();
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < 1; i++) {
     vector_average(x_cc, x_nc);
   }
   double tend = WTime();
-  printf("1000x vector_average took %g s\n", tend - tbeg);
+  printf("1 vector_average took %g s\n", tend - tbeg);
 
 
   vector_write(crd_cc, x_cc, "x_cc.asc");
