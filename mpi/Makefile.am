@@ -8,5 +8,6 @@ bin_PROGRAMS = \
 	hello_mpi_4 \
 	message_mpi \
 	message_mpi_2 \
-	test_integrate
+	test_integrate \
+	test_derivative
 
