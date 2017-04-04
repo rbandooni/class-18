@@ -39,6 +39,22 @@ write(double *x, int N, const char *filename)
 }
 
 // ----------------------------------------------------------------------
+// calc_derivative
+//
+// calculates a 2nd order centered difference approximation to the derivative
+
+static void
+calc_derivative(double *d, double *x, int N)
+{
+  double dx = 2. * M_PI / N;
+
+  for (int i = 1; i < N - 1; i++) {
+    d[i] = (x[i+1] - x[i-1]) / (2. * dx);
+  }
+}
+
+
+// ----------------------------------------------------------------------
 // main
 
 int
@@ -47,10 +63,15 @@ main(int argc, char **argv)
   const int N = 50;
 
   double *x = calloc(N, sizeof(*x));
+  double *d = calloc(N, sizeof(*x));
 
   set_sine(x, N);
   write(x, N, "x.asc");
 
+  calc_derivative(d, x, N);
+  write(d, N, "d.asc");
+
+  free(d);
   free(x);
   
   return 0;
