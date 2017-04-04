@@ -14,11 +14,11 @@
 // initializes the array x with the sine function
 
 static void
-set_sine(struct fld1d *x, int N)
+set_sine(struct fld1d *x, int N, int ib, int ie)
 {
   double dx = 2. * M_PI / N;
 
-  for (int i = x->ib; i < x->ie; i++) {
+  for (int i = ib; i < ie; i++) {
     double xx = i * dx;
     F1(x, i) = sin(xx);
   }
@@ -101,7 +101,7 @@ main(int argc, char **argv)
   struct fld1d *x = fld1d_create(ib-1, ie+1);
   struct fld1d *d = fld1d_create(ib  , ie  );
 
-  set_sine(x, N);
+  set_sine(x, N, ib, ie);
   write(x, N, "x");
 
   calc_derivative(d, x, N);
