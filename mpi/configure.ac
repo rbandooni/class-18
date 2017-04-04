@@ -18,6 +18,10 @@ AM_PROG_CC_C_O
 # add -Wall if possible
 AX_CHECK_COMPILER_FLAGS([-Wall], [CFLAGS="$CFLAGS -Wall"])
 
+# for library support
+AC_PROG_RANLIB
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
 # link with the math library if needed
 AC_CHECK_LIB([m], [sin])
 

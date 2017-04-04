@@ -11,3 +11,11 @@ bin_PROGRAMS = \
 	test_integrate \
 	test_derivative
 
+LDADD = libfld1d.a
+
+lib_LIBRARIES = libfld1d.a
+
+libfld1d_a_SOURCES = \
+	fld1d.c \
+	fld1d.h
+
