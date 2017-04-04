@@ -50,7 +50,7 @@ calc_derivative(struct fld1d *d, struct fld1d *x, int N)
 {
   double dx = 2. * M_PI / N;
 
-  for (int i = 1; i < N - 1; i++) {
+  for (int i = 0; i < N; i++) {
     F1(d, i) = (F1(x, i+1) - F1(x, i-1)) / (2. * dx);
   }
 }
@@ -64,7 +64,7 @@ main(int argc, char **argv)
 {
   const int N = 50;
 
-  struct fld1d *x = fld1d_create(0, N);
+  struct fld1d *x = fld1d_create(-1, N + 1);
   struct fld1d *d = fld1d_create(0, N);
 
   set_sine(x, N);
